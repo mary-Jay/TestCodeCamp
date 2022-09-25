@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>SeleniumLogTest.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+SeleniumLogTest.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">org.openqa.selenium.By</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.openqa.selenium.WebDriver</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.openqa.selenium.chrome.ChromeDriver</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.testng.annotations.AfterTest</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">org.testng.annotations.Test</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">SeleniumLogTest {</span>
+
+
+    <span class="s2">//import the selenium webDriver</span>
+    <span class="s0">private </span><span class="s1">WebDriver driver</span><span class="s0">;</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">setup() </span><span class="s0">throws </span><span class="s1">InterruptedException {</span>
+        <span class="s2">//Locate where the chromedriver is</span>
+        <span class="s1">System.setProperty(</span><span class="s3">&quot;webdriver.chrome.driver&quot;</span><span class="s0">, </span><span class="s3">&quot;resource/chromedriver.exe&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//Open chrome browser</span>
+        <span class="s1">driver = </span><span class="s0">new </span><span class="s1">ChromeDriver()</span><span class="s0">;</span>
+
+        <span class="s2">//Input Konga Demo page URL(https://www.konga.com)</span>
+        <span class="s1">driver.get(</span><span class="s3">&quot;https://www.konga.com/&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">Thread.sleep(</span><span class="s4">5000</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//Maximize</span>
+        <span class="s1">driver.manage().window().maximize()</span><span class="s0">;</span>
+
+        <span class="s2">//Click on Log-in/sign-up button to open log-in page</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">nav-bar-fix</span><span class="s0">\&quot;</span><span class="s3">]/div[1]/div/div/div[4]/a&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+
+        <span class="s2">//locate the email field and input your username on the username field</span>
+        <span class="s1">driver.findElement(By.id(</span><span class="s3">&quot;username&quot;</span><span class="s1">)).sendKeys(</span><span class="s3">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//locate the password field and input your username on the password field</span>
+        <span class="s1">driver.findElement(By.id(</span><span class="s3">&quot;password&quot;</span><span class="s1">)).sendKeys(</span><span class="s3">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//click on the log-in button</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">app-content-wrapper</span><span class="s0">\&quot;</span><span class="s3">]/div[3]/section/section/aside/div[2]/div/form/div[3]/button&quot;</span><span class="s1">))</span><span class="s0">;</span>
+
+        <span class="s2">//Locate 'My Account' button</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">nav-bar-fix</span><span class="s0">\&quot;</span><span class="s3">]/div[1]/div/div/div[4]/div/a/span&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+
+        <span class="s2">//Log out</span>
+        <span class="s1">driver.findElement(By.xpath(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">nav-bar-fix</span><span class="s0">\&quot;</span><span class="s3">]/div[1]/div/div/div[4]/div/ul/li[7]/a&quot;</span><span class="s1">)).click()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+    <span class="s1">@AfterTest</span>
+    <span class="s0">public void </span><span class="s1">closeBrowser(){</span>
+        <span class="s2">//Quit browser</span>
+        <span class="s1">driver.quit()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+</pre>
+</body>
+</html>
